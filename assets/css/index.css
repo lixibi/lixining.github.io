@@ -83,6 +83,7 @@ li#link-more:hover i{opacity: 1; font-size: inherit; color: #888;}
 	#link-mail{left: 420px; top: 0;}
 	#link-wechat{left: 630px; top: 0;}
 	#link-github{left: 420px; top: 105px;}
+	#link-weibo{left: 520; top: 105px;}
 	#link-google-plus{left: 525px; top: 105px;}
 	#link-more{left: 630px; top: 105px;}
 	#card ul{
@@ -113,6 +114,7 @@ li#link-more:hover i{opacity: 1; font-size: inherit; color: #888;}
 	li#link-mail.half{left: 0; top: 210px; width: 305px;}
 	#link-wechat{left: 315px; top: 210px;}
 	#link-github{left: 420px; top: 0;}
+	#link-weibo{left: 350; top: 0;}
 	#link-google-plus{left: 420px; top: 105px;}
 	#link-more{left: 420px; top: 210px;}
 }
@@ -123,6 +125,7 @@ li#link-more:hover i{opacity: 1; font-size: inherit; color: #888;}
 	#link-blog{left: 210px; top: 0;}
 	li#link-mail.half{left: 0; top: 210px; width: 410px;}
 	#link-wechat{left: 210px; top: 315px;}
+	#link-weibo{left: 0; top: 315px;}
 	#link-github{left: 0; top: 315px;}
 	#link-google-plus{left: 105px; top: 315px;}
 	#link-more{left: 315px; top: 315px;}
