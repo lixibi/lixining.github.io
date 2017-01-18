@@ -64,6 +64,7 @@ a:hover{color: #fff; text-decoration: underline;}
 #card li:hover span{display: block; top: 0; opacity: 1;}
 #link-works{left: 0; top: 0;}
 #link-works:hover{background-color: #39c;}
+#link-weibo:hover{background-color: #e21833;}
 #link-blog:hover{background-color: #d81;}
 #link-github:hover{background-color: #333;}
 #link-mail:hover{background-color: #595;}
