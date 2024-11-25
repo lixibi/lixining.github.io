@@ -1,68 +1,253 @@
-
 <!DOCTYPE html>
-<html lang="en">
-  <head>
+<html lang="zh">
+<head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-
-
-    <title>李希宁</title>
-
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>李希宁 | 技术开发者</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" sizes="any" mask href="ico.svg">
     <link rel="apple-touch-icon" href="custom_icon.png">
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/font_224896_a6dycwhyrrsy8pvi.css">
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #2d5af0;
+            --accent-color: #627ef7;
+            --bg-color: #ffffff;
+            --text-color: #2c3e50;
+            --secondary-bg: #f8f9fa;
+            --pattern-color: rgba(45, 90, 240, 0.03);
+            --grid-size: 30px;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            padding-top: 2rem;
+            position: relative;
+            /* 添加简单的网格底纹 */
+            background-image: 
+                linear-gradient(var(--pattern-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--pattern-color) 1px, transparent 1px);
+            background-size: var(--grid-size) var(--grid-size);
+        }
 
+        /* 添加一个微妙的对角线纹理 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%),
+                linear-gradient(-45deg, var(--pattern-color) 25%, transparent 25%);
+            background-size: 60px 60px;
+            z-index: -1;
+            opacity: 0.5;
+        }
 
-   <link rel="stylesheet" href="/static/bootstrap.min.css">
-<link rel="stylesheet" href="/static/font_224896_a6dycwhyrrsy8pvi.css">
-<!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-<script src="/static/jquery.min.js"></script>
+        .container {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
 
-<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-<script src="/static/bootstrap.min.js"></script>
+        .masthead {
+            border-bottom: 3px solid var(--accent-color);
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            position: relative;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 8px 8px 0 0;
+            padding: 1rem;
+        }
 
+        .masthead::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
 
-  </head>
+        .text-muted {
+            color: var(--primary-color) !important;
+            font-family: 'Consolas', monospace;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
 
-  <body>
+        .jumbotron {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(45, 90, 240, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(45, 90, 240, 0.1);
+            backdrop-filter: blur(5px);
+        }
 
+        .jumbotron:hover {
+            box-shadow: 0 15px 40px rgba(45, 90, 240, 0.15);
+            transform: translateY(-5px);
+        }
+
+        h1 {
+            color: var(--primary-color);
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            color: #546e7a;
+        }
+
+        .badge {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            font-family: 'Consolas', monospace;
+            font-weight: normal;
+            margin-left: 1rem;
+            border-radius: 6px;
+        }
+
+        .btn {
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.8rem 1.8rem;
+            margin: 1rem 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btn-success {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(45, 90, 240, 0.2);
+        }
+
+        .footer {
+            margin-top: 3rem;
+            padding: 1.5rem;
+            border-top: 1px solid #e9ecef;
+            font-size: 0.9rem;
+            color: #6c757d;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 0 0 8px 8px;
+        }
+
+        .footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .jumbotron {
+                padding: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .badge {
+                display: block;
+                margin: 1rem 0;
+                text-align: center;
+            }
+
+            /* 在移动端调整网格大小 */
+            :root {
+                --grid-size: 20px;
+            }
+        }
+
+        /* 添加简单的打字机效果 */
+        .typing::after {
+            content: '|';
+            animation: blink 1s infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
     <div class="container">
+        <div class="masthead">
+            <h3 class="text-muted typing">技术信息聚合</h3>
+        </div>
+        <div class="jumbotron">
+            <h1>李希宁</h1>
+            <p class="lead">现居中国桂林市</p>
+            <p><h4>我是一个自由的开发者，经验丰富，支付一定的报酬后 <span class="badge">￥:150/hour</span> ，你可以愉快地雇佣我。</h4></p>
+            <p>
+                <a href="mailto:ceo@lixining.com" class="btn btn-success">
+                    <i class="iconfont icon-lianxiwomenyoujian"></i> 联系我
+                </a>
+            </p>
+        </div>
+        <div class="footer">
+            <p>© 2024 <a href="http://lixining.com">lixining.com</a> <a href="http://beian.miit.gov.cn">桂ICP备17003475号</a></p>
+        </div>
+    </div>
 
-      <div class="masthead">
-        <h3 class="text-muted">技术信息聚合</h3>
-
-      </div>
-
-      <!-- Jumbotron -->
-      <div class="jumbotron">
-
-        <h1>李希宁</h1>
-        <p class="lead"> 现居中国桂林市</p>
-		<p class=".am-badge"><h4>我是一个自由的开发者，经验丰富，支付一定的报酬后 <span class="badge" contenteditable="true">￥:150/hour</span> ，你可以愉快地雇佣我。</h4></p>
-
-
-
-        <p><a href="mailto:ceo@lixining.com" class="btn btn-success"><i class="iconfont icon-lianxiwomenyoujian"></i> 联系我</a>
-        <!-- <a href="http://lixibi.taobao.com" class="btn btn-warning"><span class="glyphicon glyphicon-shopping-cart"></span> 访问我在淘宝的商店</a> -->
-</button>
-
-</p>
-      </div>
-
-      <!-- Example row of columns -->
-
-      <!-- Site footer -->
-      <div class="footer">
-        <p>© 2017 <a href="http://lixining.com">lixining.com </a> <a href="http://beian.miit.gov.cn">桂ICP备17003475号</a></p>
-      </div>
-
-    </div> <!-- /container -->
-
-
-
-
-  </body>
+    <script>
+        $(document).ready(function() {
+            // 添加页面加载动画
+            $('.container').hide().fadeIn(1000);
+            
+            // 添加鼠标悬停效果
+            $('.btn').hover(
+                function() { $(this).addClass('pulse'); },
+                function() { $(this).removeClass('pulse'); }
+            );
+        });
+    </script>
+</body>
 </html>
-
