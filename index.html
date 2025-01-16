@@ -3,13 +3,59 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <title>李希宁</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="icon" sizes="any" mask href="ico.svg">
     <link rel="apple-touch-icon" href="custom_icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+    <link rel="stylesheet" href="static/all.min.css">
+    <script src="static/jquery.min.js"></script>
     <style>
+        /* 确保字体文件路径正确 */
+        @font-face {
+            font-family: "Font Awesome 6 Free";
+            font-style: normal;
+            font-weight: 900;
+            font-display: block;
+            src: url("static/webfonts/fa-solid-900.woff2") format("woff2"),
+                 url("static/webfonts/fa-solid-900.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Font Awesome 6 Brands";
+            font-style: normal;
+            font-weight: 400;
+            font-display: block;
+            src: url("static/webfonts/fa-brands-400.woff2") format("woff2"),
+                 url("static/webfonts/fa-brands-400.ttf") format("truetype");
+        }
+
+        @font-face {
+            font-family: "Font Awesome 6 Free";
+            font-style: normal;
+            font-weight: 400;
+            font-display: block;
+            src: url("static/webfonts/fa-regular-400.woff2") format("woff2"),
+                 url("static/webfonts/fa-regular-400.ttf") format("truetype");
+        }
+
+        /* 确保图标类使用正确的字体族 */
+        .fas {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+        }
+
+        .fab {
+            font-family: "Font Awesome 6 Brands";
+            font-weight: 400;
+        }
+
+        .far {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 400;
+        }
+
         /* 保留原有的root和基础样式 */
         :root {
             --primary-color: #2d5af0;
@@ -250,12 +296,123 @@
                 --grid-size: 20px;
             }
         }
+
+        .typing-en, .typing-cn {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-color);
+            white-space: pre-wrap;
+            margin: 0;
+            animation: blink 0.75s step-end infinite;
+            display: inline-block;
+            padding-right: 4px;
+        }
+
+        .typing-cn {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-top: 1rem;
+            border-right: none;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+
+        .project-links {
+            margin-top: 1rem;
+        }
+
+        .project-links .btn {
+            font-size: 0.85rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .project-links .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(45, 90, 240, 0.2);
+        }
+
+        .skill-item p {
+            font-size: 0.9rem;
+            color: #666;
+            margin: 0.5rem 0;
+        }
+
+        .typing-section {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .typing-en, .typing-cn {
+            overflow: hidden;
+            border-right: 3px solid var(--primary-color);
+            white-space: pre-wrap;
+            margin: 0;
+            animation: blink 0.75s step-end infinite;
+            display: inline-block;
+            padding-right: 4px;
+        }
+
+        .typing-cn {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-top: 1rem;
+            border-right: none;
+        }
+
+        @keyframes blink {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary-color) }
+        }
+
+        .nav-tabs-wrapper {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(45, 90, 240, 0.1);
+        }
+
+        .nav-tabs {
+            border-bottom: none;
+        }
+
+        .nav-tabs .nav-link {
+            color: var(--text-color);
+            border: none;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: var(--primary-color);
+            background: rgba(45, 90, 240, 0.1);
+        }
+
+        .nav-tabs .nav-link.active {
+            color: white;
+            background: var(--primary-color);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="masthead">
-            <h3 class="text-muted typing">Welcome!</h3>
+            <!-- 删除这里的打字机效果 -->
         </div>
         
         <div class="jumbotron">
@@ -266,146 +423,188 @@
                     <p class="lead">现居中国桂林市</p>
                     <p><h4>ENGINEER</h4></p>
                     <div class="social-links">
-                        <a href="https://twitter.com/lixining" title="Twitter"><i class="fab fa-twitter"></i></a>
+                       
                         <a href="https://github.com/lixibi" title="GitHub"><i class="fab fa-github"></i></a>
-                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                      
                         <a href="#Y2VvQGxpeGluaW5nLmNvbQ==" title="Email"><i class="fas fa-envelope"></i></a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div class="skills-section">
-            <div class="skill-category">
-                <h3><i class="fas fa-code"></i>Programming Languages & Development</h3>
-                <div class="skill-grid">
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <i class="fab fa-python skill-icon"></i>
-                            <span class="skill-name">Python</span>
-                            <span class="expertise-tag tag-advanced">Advanced</span>
+        <div class="nav-tabs-wrapper">
+            <div class="typing-section">
+                <p class="typing-cn"></p>
+            </div>
+            <ul class="nav nav-tabs justify-content-center mb-4">
+                <li class="nav-item">
+                    <a class="nav-link active" data-tab="ai-projects">AI</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="bilibili">B站</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="articles">文章</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-tab="reviews">书/影</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="content-sections">
+            <!-- AI项目页面 -->
+            <div class="content-section active" id="ai-projects">
+               
+
+                <div class="skill-category">
+                   
+                    <div class="skill-grid">
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <i class="fas fa-brain"></i>
+                                <span class="skill-name">道长</span>
+                                <span class="expertise-tag tag-advanced">已上线</span>
+                            </div>
+                            <p>基于 GPT-4 开发的智能对话系统，一个有趣的 AI 伙伴。</p>
+                            <div class="project-links">
+                                <a href="https://dao.lixining.com" target="_blank" class="btn btn-sm btn-outline-primary">立即体验</a>
+                            </div>
                         </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-advanced" style="width: 80%"></div>
+
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <i class="fas fa-image"></i>
+                                <span class="skill-name">AI 图像生成器</span>
+                                <span class="expertise-tag tag-intermediate">开发中</span>
+                            </div>
+                            <p>使用 Stable Diffusion 开发的图像生成工具，支持文本到图像转换。</p>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-sm btn-outline-primary">项目详情</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <i class="fab fa-java skill-icon"></i>
-                            <span class="skill-name">Java</span>
-                            <span class="expertise-tag tag-advanced">Advanced</span>
-                        </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-advanced" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <i class="fab fa-swift skill-icon"></i>
-                            <span class="skill-name">iOS Development</span>
-                            <span class="expertise-tag tag-advanced">Advanced</span>
-                        </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-advanced" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <i class="fab fa-windows skill-icon"></i>
-                            <span class="skill-name">C#/.NET</span>
-                            <span class="expertise-tag tag-intermediate">Intermediate</span>
-                        </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-intermediate" style="width: 65%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <i class="fas fa-code skill-icon"></i>
-                            <span class="skill-name">Go</span>
-                            <span class="expertise-tag tag-intermediate">Intermediate</span>
-                        </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-intermediate" style="width: 60%"></div>
+
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <i class="fas fa-language"></i>
+                                <span class="skill-name">智能翻译助手</span>
+                                <span class="expertise-tag tag-advanced">已上线</span>
+                            </div>
+                            <p>结合多个大语言模型的智能翻译工具，支持多语言互译。</p>
+                            <div class="project-links">
+                                <a href="#" class="btn btn-sm btn-outline-primary">立即体验</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="skill-category">
-                <h3><i class="fas fa-server"></i>DevOps & Security</h3>
+            <!-- B站页面 -->
+            <div class="content-section" id="bilibili">
                 <div class="skill-grid">
                     <div class="skill-item">
                         <div class="skill-header">
-                            <i class="fab fa-linux skill-icon"></i>
-                            <span class="skill-name">Linux System</span>
-                            <span class="expertise-tag tag-advanced">Advanced</span>
+                            <i class="fab fa-bilibili"></i>
+                            <span class="skill-name">技术分享</span>
+                            <span class="expertise-tag tag-advanced">持续更新</span>
                         </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-advanced" style="width: 75%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <i class="fas fa-network-wired skill-icon"></i>
-                            <span class="skill-name">Network Administration</span>
-                            <span class="expertise-tag tag-intermediate">Intermediate</span>
-                        </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-intermediate" style="width: 65%"></div>
+                        <p>分享编程和AI技术相关的教程与经验</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary">观看视频</a>
                         </div>
                     </div>
+                    <!-- 可以添加更多视频内容 -->
+                </div>
+            </div>
+
+            <!-- 文章页面 -->
+            <div class="content-section" id="articles">
+                <div class="skill-grid">
                     <div class="skill-item">
                         <div class="skill-header">
-                            <i class="fab fa-docker skill-icon"></i>
-                            <span class="skill-name">Docker</span>
-                            <span class="expertise-tag tag-advanced">Advanced</span>
+                            <i class="fas fa-pen-fancy"></i>
+                            <span class="skill-name">技术博客</span>
                         </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-advanced" style="width: 70%"></div>
+                        <p>最新技术探索与心得分享</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary">阅读更多</a>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- 书影推荐页面 -->
+            <div class="content-section" id="reviews">
+                <div class="skill-grid">
                     <div class="skill-item">
                         <div class="skill-header">
-                            <i class="fas fa-shield-alt skill-icon"></i>
-                            <span class="skill-name">Web Security</span>
-                            <span class="expertise-tag tag-intermediate">Intermediate</span>
+                            <i class="fas fa-book"></i>
+                            <span class="skill-name">近期阅读</span>
                         </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-intermediate" style="width: 65%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-header">
-                            <i class="fas fa-cloud skill-icon"></i>
-                            <span class="skill-name">Cloud Services</span>
-                            <span class="expertise-tag tag-intermediate">Intermediate</span>
-                        </div>
-                        <div class="skill-level">
-                            <div class="skill-level-fill level-intermediate" style="width: 60%"></div>
+                        <p>分享近期阅读的好书与观影感受</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-sm btn-outline-primary">查看推荐</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <div class="footer">
         <p>© 2024 <a href="http://lixining.com">lixining.com</a> <a href="http://beian.miit.gov.cn">桂ICP备17003475号-1</a></p>
     </div>
 </div>
 
+<script src="static/jquery.min.js"></script>
+<script src="static/bootstrap.min.js"></script>
 <script>
-    $(document).ready(function() {
-        // 添加页面加载动画
+    document.addEventListener('DOMContentLoaded', function() {
+        // 中文内容
+        const cnText = "既然你来了，就来看看我的内心吧。我是个神经质的人，思绪常常失控，情感也异常激烈。内心深处藏着我的秘密、情感和痴迷。你可以看看我的书单，欣赏我推荐的电影，阅读我写的诗。这些东西都是我内心的真实写照，是我无法抑制的思绪的结晶。这就是真实的我，无法改变。";
+        const cnElement = document.querySelector('.typing-cn');
+        cnElement.textContent = '';
+        
+        let cnIndex = 0;
+
+        // 直接开始打印中文内容
+        function typeChinese() {
+            if (cnIndex < cnText.length) {
+                cnElement.textContent += cnText.charAt(cnIndex);
+                cnIndex++;
+                setTimeout(typeChinese, 100);
+            }
+        }
+        
+        // 开始打字效果
+        typeChinese();
+
+        // 保留原有的页面加载动画
         $('.container').hide().fadeIn(1000);
         
-        // 添加鼠标悬停效果
+        // 保留原有的鼠标悬停效果
         $('.btn').hover(
             function() { $(this).addClass('pulse'); },
             function() { $(this).removeClass('pulse'); }
         );
+
+        // 添加标签切换功能
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有活动状态
+                navLinks.forEach(l => l.classList.remove('active'));
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // 添加新的活动状态
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
     });
 </script>
 </body>
